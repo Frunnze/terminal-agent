@@ -7,9 +7,10 @@ from routers.continue_with_tools import ContinueWithToolsRouter
 
 
 class AgentBuilder:
-    def __init__(self, model, tools_by_name):
+    def __init__(self, model, tools_by_name, emitter):
         self.model = model
         self.tools_by_name = tools_by_name
+        self.emitter = emitter
 
     def build(self):
         agent_builder = StateGraph(MessagesState)
@@ -21,7 +22,7 @@ class AgentBuilder:
         )
         agent_builder.add_node(
             "tool_node", 
-            ToolNode(self.tools_by_name).tool_node
+            ToolNode(self.tools_by_name, self.emitter).tool_node
         )
 
         # Add edges

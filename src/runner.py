@@ -4,12 +4,14 @@ from model import model
 from graph import AgentBuilder
 from tools.file_reader.file_reader import FileReaderTool
 from tools.bash import BashTool
+from emitters.terminal_emitter import TerminalEmitter
 
+emitter = TerminalEmitter()
 
 # Add tools
 tools = [
     FileReaderTool().read,
-    BashTool().run
+    BashTool().bash
 ]
 tools_by_name = {tool.name: tool for tool in tools}
 
@@ -18,7 +20,8 @@ model_with_tools = model.bind_tools(tools=tools)
 
 agent = AgentBuilder(
     model=model_with_tools,
-    tools_by_name=tools_by_name
+    tools_by_name=tools_by_name,
+    emitter=emitter
 )
 agent = agent.build()
 
@@ -40,4 +43,4 @@ while True:
     )
     messages = agent.invoke(messages)
     last_message = messages["messages"][-1]
-    print("AI: ", last_message.content)
+    emitter.emit(f"AI: {last_message.content}")

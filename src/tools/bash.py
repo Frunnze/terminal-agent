@@ -5,7 +5,7 @@ from langchain.tools import tool
 class BashTool:
     @staticmethod
     @tool
-    def run(command: str) -> str:
+    def bash(command: str) -> str:
         """Execute a bash command."""
         
         result = subprocess.run(
