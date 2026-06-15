@@ -27,6 +27,7 @@ agent = agent.build()
 
 messages = {"messages": []}
 while True:
+    emitter.emit("="*50)
     user_input = input(">")
 
     if user_input == "/clear":
@@ -43,4 +44,4 @@ while True:
     )
     messages = agent.invoke(messages)
     last_message = messages["messages"][-1]
-    emitter.emit(f"AI: {last_message.content}")
+    emitter.emit(f"\n>AI: {last_message.content}")

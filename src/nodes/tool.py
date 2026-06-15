@@ -10,7 +10,7 @@ class ToolNode:
         result = []
 
         for tool_call in state["messages"][-1].tool_calls:
-            self.emitter.emit(f"{tool_call["name"]}({tool_call["args"]})")
+            self.emitter.emit(f"Tool: {tool_call["name"]}({tool_call["args"]})")
 
             tool = self.tools_by_name[tool_call["name"]]            
             observation = tool.invoke(tool_call["args"])
