@@ -1,0 +1,22 @@
+# To-Dos
+
+- [x] Read files tool for text files.
+- [ ] Write/update text files tool.
+- [ ] Web-search tool using direct URL requests.
+- [ ] Memorize tool.
+- [ ] Recall tool.
+- [ ] Forget tool.
+- [ ] Modify memory tool.
+- [ ] Approval for tools' execution.
+- [ ] Planner subagent.
+- [ ] Verifier subagent.
+- [ ] Code reviewer subagent.
+- [ ] RAG for project.
+- [ ] Initial CLI app using specialized framework.
+- [ ] Current goal section.
+- [ ] Current state section.
+- [ ] To-do list / plan
+- [ ] Conversation / past interactions
+- [ ] Tool search from vector db.
+- [ ] Context compaction.
+- [ ] Conversation summarization.
