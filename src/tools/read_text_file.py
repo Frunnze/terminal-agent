@@ -1,9 +1,9 @@
 from langchain.tools import tool
 
-from src.config import MAX_RETURNED_CHARS
+from config import MAX_RETURNED_CHARS
 
 
-class FileReaderTool:
+class TextFileReaderTool:
     @staticmethod
     @tool
     def read_text_file(

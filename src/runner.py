@@ -2,7 +2,8 @@ from langchain.messages import HumanMessage
 
 from model import model
 from graph import AgentBuilder
-from tools.file_reader.file_reader import FileReaderTool
+from tools.read_text_file import TextFileReaderTool
+from tools.modify_text_file import TextFileModifierTool
 from tools.bash import BashTool
 from emitters.terminal_emitter import TerminalEmitter
 
@@ -10,7 +11,8 @@ emitter = TerminalEmitter()
 
 # Add tools
 tools = [
-    FileReaderTool().read,
+    TextFileReaderTool().read_text_file,
+    TextFileModifierTool(emitter).modify_text_file,
     BashTool().bash
 ]
 tools_by_name = {tool.name: tool for tool in tools}
