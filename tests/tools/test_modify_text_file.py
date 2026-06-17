@@ -1,9 +1,6 @@
 import os
-import sys
 import tempfile
 
-# Ensure `src` is importable when running tests from repo root.
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from src.tools.modify_text_file import TextFileModifierTool
 
