@@ -14,7 +14,7 @@ class _MockEmitter:
 
 
 def _tool():
-    return TextFileModifierTool(_MockEmitter()).modify_text_file
+    return TextFileModifierTool(_MockEmitter())
 
 
 def _write_tmp(content: str) -> str:

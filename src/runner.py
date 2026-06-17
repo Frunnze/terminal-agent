@@ -12,7 +12,7 @@ emitter = TerminalEmitter()
 # Add tools
 tools = [
     TextFileReaderTool().read_text_file,
-    TextFileModifierTool(emitter).modify_text_file,
+    TextFileModifierTool(emitter),
     BashTool().bash
 ]
 tools_by_name = {tool.name: tool for tool in tools}
