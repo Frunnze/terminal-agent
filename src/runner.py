@@ -6,8 +6,10 @@ from tools.read_text_file import TextFileReaderTool
 from tools.modify_text_file import TextFileModifierTool
 from tools.bash import BashTool
 from emitters.terminal_emitter import TerminalEmitter
+from prompts.prompt_loader import PromptLoader
 
 emitter = TerminalEmitter()
+prompt_loader = PromptLoader()
 
 # Add tools
 tools = [
@@ -23,7 +25,8 @@ model_with_tools = model.bind_tools(tools=tools)
 agent = AgentBuilder(
     model=model_with_tools,
     tools_by_name=tools_by_name,
-    emitter=emitter
+    emitter=emitter,
+    prompt_loader=prompt_loader,
 )
 agent = agent.build()
 

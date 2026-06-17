@@ -1,20 +1,12 @@
-from pathlib import Path
-
 from langchain.tools import BaseTool
 
 from config import MAX_RETURNED_CHARS
-
-_DESCRIPTION_PATH = (
-    Path(__file__).parent.parent
-    / "prompts"
-    / "tool_descriptions"
-    / "read_text_file.md"
-)
+from prompts.prompt_loader import PromptLoader
 
 
 class TextFileReaderTool(BaseTool):
     name: str = "read_text_file"
-    description: str = _DESCRIPTION_PATH.read_text()
+    description: str = PromptLoader().load_tool_description("read_text_file")
 
     def _run(
         self,

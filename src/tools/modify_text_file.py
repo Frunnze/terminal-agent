@@ -1,18 +1,13 @@
-from pathlib import Path
 from typing import Any
+
 from langchain.tools import BaseTool
 
-_DESCRIPTION_PATH = (
-    Path(__file__).parent.parent
-    / "prompts"
-    / "tool_descriptions"
-    / "modify_text_file.md"
-)
+from prompts.prompt_loader import PromptLoader
 
 
 class TextFileModifierTool(BaseTool):
     name: str = "modify_text_file"
-    description: str = _DESCRIPTION_PATH.read_text()
+    description: str = PromptLoader().load_tool_description("modify_text_file")
     emitter: Any = None
 
     def __init__(self, emitter):

@@ -11,4 +11,9 @@ You have to complete user request fully.
 
 ## Memories
 
+## Agent Rules
+```
+{agent_rules}
+```
+
 ## Skills

@@ -1,7 +1,8 @@
 # To-Dos
 
 - [x] Read files tool for text files.
-- [ ] Write/update text files tool.
+- [x] Write/update text files tool.
+- [ ] Fetch tool
 - [ ] Web-search tool using direct URL requests.
 - [ ] Memorize tool.
 - [ ] Recall tool.
