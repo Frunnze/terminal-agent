@@ -1,16 +1,15 @@
-from typing import Any
-
 from langchain.tools import BaseTool
 
+from interfaces.emitter import IEmitter
 from prompts.prompt_loader import PromptLoader
 
 
 class TextFileModifierTool(BaseTool):
     name: str = "modify_text_file"
     description: str = PromptLoader().load_tool_description("modify_text_file")
-    emitter: Any = None
+    emitter: IEmitter | None = None
 
-    def __init__(self, emitter):
+    def __init__(self, emitter: IEmitter):
         super().__init__()
         self.emitter = emitter
 

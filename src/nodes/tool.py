@@ -1,8 +1,10 @@
 from langchain.messages import ToolMessage
 
+from interfaces.emitter import IEmitter
+
 
 class ToolNode:
-    def __init__(self, tools_by_name: dict, emitter):
+    def __init__(self, tools_by_name: dict, emitter: IEmitter):
         self.tools_by_name = tools_by_name
         self.emitter = emitter
 

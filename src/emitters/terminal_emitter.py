@@ -1,7 +1,8 @@
 from config import MAX_TOOL_ARG_PRINT_CHARS
+from interfaces.emitter import IEmitter
 
 
-class TerminalEmitter:
+class TerminalEmitter(IEmitter):
     def __init__(self):
         pass
 

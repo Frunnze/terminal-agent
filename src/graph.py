@@ -5,6 +5,7 @@ from nodes.llm_model import LlmModelNode
 from nodes.tool import ToolNode
 from routers.continue_with_tools import ContinueWithToolsRouter
 from interfaces.prompt_loader import IPromptLoader
+from interfaces.emitter import IEmitter
 
 
 class AgentBuilder:
@@ -12,7 +13,7 @@ class AgentBuilder:
         self,
         model,
         tools_by_name,
-        emitter,
+        emitter: IEmitter,
         prompt_loader: IPromptLoader,
     ):
         self.model = model
