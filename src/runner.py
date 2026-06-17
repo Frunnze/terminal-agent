@@ -11,7 +11,7 @@ emitter = TerminalEmitter()
 
 # Add tools
 tools = [
-    TextFileReaderTool().read_text_file,
+    TextFileReaderTool(),
     TextFileModifierTool(emitter),
     BashTool().bash
 ]
