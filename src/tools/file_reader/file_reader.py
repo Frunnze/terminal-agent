@@ -1,13 +1,12 @@
 from langchain.tools import tool
 
-
-MAX_RETURNED_CHARS = 5000
+from src.config import MAX_RETURNED_CHARS
 
 
 class FileReaderTool:
     @staticmethod
     @tool
-    def read(
+    def read_text_file(
         file_path: str, 
         start_line: int = 0, 
         end_line: int = -1
@@ -26,12 +25,14 @@ class FileReaderTool:
             lines are concatenated.
         """
 
-        if start_line >= 0 and end_line >= 0 and end_line >= start_line:
-            with open(file_path, 'r') as file:
-                lines = file.readlines()[start_line:end_line+1]
-            return "\n".join(lines)[:MAX_RETURNED_CHARS]
-        else:
+        try:
+            if start_line >= 0 and end_line >= 0 and end_line >= start_line:
+                with open(file_path, 'r') as file:
+                    lines = file.readlines()
+                    if start_line < len(lines):
+                        return "\n".join(lines[start_line:end_line + 1])[:MAX_RETURNED_CHARS]
+
             with open(file_path, 'r') as file:
                 return file.read()[:MAX_RETURNED_CHARS]
-        
-        return "Error reading file."
+        except Exception as e:
+            return f"Error reading file: {e}"
