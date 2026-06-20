@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "terminal-agent"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain==1.3.9",
+    "langgraph==1.2.5",
+    "langchain-openai==1.3.2",
+    "python-dotenv==1.2.2"
+]
+
+[project.scripts]
+agent = "runner:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["runner"]
