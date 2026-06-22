@@ -2,5 +2,5 @@
 venv
 .DS_Store
 __pycache__
-docs
 logs
+arch.drawio
