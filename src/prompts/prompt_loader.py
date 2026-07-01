@@ -11,11 +11,6 @@ _AGENT_RULES_PATH = Path(__file__).parent.parent.parent / "AGENTS.md"
 
 class PromptLoader(IPromptLoader):
     def load_system_prompt(self) -> str:
-        """Load and render the system prompt with agent rules injected.
-
-        Returns:
-            Rendered system prompt string.
-        """
         template = (_PROMPTS_DIR / "system_prompt.md").read_text()
         agent_rules = _AGENT_RULES_PATH.read_text()
 

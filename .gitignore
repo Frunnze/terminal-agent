@@ -4,3 +4,4 @@ venv
 __pycache__
 logs
 arch.drawio
+chroma_vector_db

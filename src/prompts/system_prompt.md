@@ -42,7 +42,7 @@ You have to complete user request fully. When the user asks for something, they 
 ### Solutions
 ...
 
-### Task related
+### Ideas
 ...
 
 

@@ -6,21 +6,29 @@ from langchain_core.messages import HumanMessage
 
 from model import model
 from graph import AgentBuilder
+
+from emitters.terminal_emitter import TerminalEmitter
+from prompts.prompt_loader import PromptLoader
+
 from tools.read_text_file import TextFileReaderTool
 from tools.modify_text_file import TextFileModifierTool
 from tools.bash import BashTool
-from emitters.terminal_emitter import TerminalEmitter
-from prompts.prompt_loader import PromptLoader
+from tools.memorize import MemorizeTool
+from tools.recall import RecallTool
+from vectordb.chroma_db_manager import ChromaDb
 
 
 def main():
     emitter = TerminalEmitter()
     prompt_loader = PromptLoader()
+    vdb = ChromaDb()
 
     tools = [
         TextFileReaderTool(),
         TextFileModifierTool(emitter),
-        BashTool().bash
+        BashTool().bash,
+        MemorizeTool(vdb=vdb),
+        RecallTool(vdb=vdb),
     ]
     tools_by_name = {tool.name: tool for tool in tools}
 
@@ -54,3 +62,5 @@ def main():
         messages = agent.invoke(messages)
         last_message = messages["messages"][-1]
         emitter.emit(f"\n>AI: {last_message.content}")
+
+main()
